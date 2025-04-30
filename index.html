@@ -2,11 +2,42 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
-  <title>Moja Pierwsza Strona</title>
+  <title>Logowanie</title>
 </head>
 <body>
-  <h1>Witaj na mojej stronie!</h1>
-  <p>To jest przykładowa strona stworzona w Visual Studio Code.</p>
+  <h2>Zaloguj się</h2>
+
+  <form onsubmit="zaloguj(); return false;">
+    <label for="login">Login:</label><br>
+    <input type="text" id="login" name="login" required><br><br>
+
+    <label for="haslo">Hasło:</label><br>
+    <input type="password" id="haslo" name="haslo" required>
+    <input type="checkbox" onclick="pokazHaslo()"> Pokaż hasło<br><br>
+
+    <button type="submit">Zaloguj</button>
+  </form>
+
+  <p id="komunikat"></p>
+
+  <script>
+    function pokazHaslo() {
+      const hasloInput = document.getElementById("haslo");
+      if (hasloInput.type === "password") {
+        hasloInput.type = "text";
+      } else {
+        hasloInput.type = "password";
+      }
+    }
+
+    function zaloguj() {
+      const login = document.getElementById("login").value;
+      const haslo = document.getElementById("haslo").value;
+
+      // UWAGA: to nie jest bezpieczne! Tylko demonstracja.
+      document.getElementById("komunikat").innerText =
+        "Zalogowano jako: " + login + "\nHasło: " + haslo;
+    }
+  </script>
 </body>
 </html>
-
